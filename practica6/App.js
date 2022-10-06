@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 import { StyleSheet, View, Button, ScrollView, Alert } from "react-native";
-import {Input} from 'native-base';
+import {Input} from 'react-native-elements';
 import { collection, addDoc, doc, getDoc, getDocs } from 'firebase/firestore';
-import {db} from './firebase_config';
+import { db } from "./db/firebase";
 
 
 export default function App(){
@@ -28,7 +28,7 @@ export default function App(){
   }
 
   const onSend = async ()=>{
-    const docRef =await addDoc(collection(db,'usuarios'),data);
+    const docRef =await addDoc(collection(db,'usuarios'), data);
   }
 
   const onUsersDB = async ()=> {
@@ -54,16 +54,16 @@ export default function App(){
 
     <ScrollView contentContainerStyle={{flexGrow:1,justifyContent:'center'}}>
       <View>
-        <Input placeholder="Nombre de usuario" style={styles.input} onChangeText={(value) => changeText('username',value)} value={data.username}/>
+        <Input placeholder="Nombre de usuario" onChangeText={(value) => changeText('username',value)} value={data.username}/>
       </View>
       <View>
-        <Input placeholder="Correo electrónico" style={styles.input} onChangeText={(value) => changeText('email',value)}/>
+        <Input placeholder="Correo electrónico" onChangeText={(value) => changeText('email',value)}/>
       </View>
       <View>
-        <Input placeholder="contraseña" style={styles.input} onChangeText={(value) => changeText('psw',value)} secureTextEntry={true}/>
+        <Input placeholder="contraseña" onChangeText={(value) => changeText('psw',value)} secureTextEntry={true}/>
       </View>
       <View>
-        <Input placeholder="Confirmar contraseña" style={styles.input} onChangeText={(value) => changeText('psw2',value)} secureTextEntry={true}/>
+        <Input placeholder="Confirmar contraseña" onChangeText={(value) => changeText('psw2',value)} secureTextEntry={true}/>
       </View>
       <View>
         <Button 

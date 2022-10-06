@@ -1,6 +1,8 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+import { initializeApp } from 'firebase/app';
+/*import { getFireStore } from '@firebase/app';
+import { getAuth } from '@firebase/auth';*/
+import { getFirestore } from 'firebase/firestore'
+import { getAuth } from 'firebase/auth';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -9,6 +11,7 @@ import { getAnalytics } from "firebase/analytics";
 const firebaseConfig = {
   apiKey: "AIzaSyA7AXa8z4SiPbuapGyGdg0I9740DbIrScs",
   authDomain: "practica6-5eb51.firebaseapp.com",
+  databaseURL: "https://practica6-5eb51-default-rtdb.firebaseio.com",
   projectId: "practica6-5eb51",
   storageBucket: "practica6-5eb51.appspot.com",
   messagingSenderId: "650343267155",
@@ -16,6 +19,10 @@ const firebaseConfig = {
   measurementId: "G-YPV9VJGB6B"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+const auth = getAuth(app);
+/*const db = initializeApp.getFirestore()
+const db = getFireStore(app);*/
+export { auth }
+/*export { db }*/
+export const db = getFirestore(app);
